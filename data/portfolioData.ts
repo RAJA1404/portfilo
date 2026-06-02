@@ -15,16 +15,25 @@ export interface SkillCategory {
 export interface Experience {
   company: string;
   role: string;
+  period: string;
   description: string;
   technologies: string[];
+}
+
+export interface Certification {
+  title: string;
+  issuer: string;
+  status: string;
 }
 
 export const profile = {
   name: "RAJA K C",
   title: "AI & Data Science Student / Full Stack Developer",
+  summary:
+    "B.Tech Artificial Intelligence and Data Science student building full-stack products, AI systems, and practical developer tools with a focus on clean user experience and reliable engineering.",
   email: "rajarx006@gmail.com",
   phone: "+91 9842559142",
-  location: "India",
+  location: "Tamil Nadu, India",
   githubUrl: "https://github.com/RAJA1404",
   linkedinUrl: "https://www.linkedin.com/in/raja-k-c-991b7a294/",
   resumeUrl: "/RAJA_KC_Updated.docx (1).pdf",
@@ -33,58 +42,45 @@ export const profile = {
 export const education = {
   degree: "B.Tech in Artificial Intelligence and Data Science",
   institution: "Nandha Engineering College",
+  location: "Tamil Nadu",
   cgpa: "7.3/10",
   graduation: "September 2027",
 };
 
+export const focusAreas = [
+  "Full Stack Development",
+  "Artificial Intelligence",
+  "Machine Learning",
+  "Deep Learning",
+  "REST APIs",
+  "React.js",
+  "Node.js",
+];
+
 export const skillCategories: SkillCategory[] = [
   {
-    title: "Core Programming",
-    skills: [
-      "Java",
-      "OOPs",
-      "Collections",
-      "Exception Handling",
-      "HTML",
-      "CSS",
-      "JavaScript",
-    ],
+    title: "Programming",
+    skills: ["Java", "Python", "JavaScript"],
   },
   {
     title: "Frontend",
-    skills: ["React.js", "Next.js", "Tailwind CSS"],
+    skills: ["React.js", "Next.js", "HTML", "CSS", "Tailwind CSS"],
   },
   {
-    title: "Backend & APIs",
-    skills: [
-      "REST APIs",
-      "Node.js",
-      "Express.js",
-      "Postman",
-      "MongoDB",
-      "JWT",
-    ],
+    title: "Backend",
+    skills: ["Node.js", "Express.js", "REST APIs"],
   },
   {
-    title: "DevOps & Tools",
-    skills: ["Git", "GitHub", "GitHub Actions", "AWS S3"],
+    title: "Database",
+    skills: ["MongoDB"],
   },
   {
-    title: "AI & Machine Learning",
-    skills: [
-      "Machine Learning",
-      "Regression",
-      "Classification",
-      "Deep Learning",
-      "NLP",
-      "Sentiment Analysis",
-      "TensorFlow",
-      "OpenCV",
-      "Computer Vision",
-      "Harris Corner Detection",
-      "SIFT Feature Detection",
-      "Multi-scale Image Blending",
-    ],
+    title: "AI & ML",
+    skills: ["TensorFlow", "Machine Learning", "Deep Learning", "NLP"],
+  },
+  {
+    title: "Tools",
+    skills: ["Git", "GitHub", "Postman", "Tableau"],
   },
 ];
 
@@ -93,7 +89,7 @@ export const projects: Project[] = [
     title: "RightToKnow - RTI Management System",
     type: "Full Stack",
     description:
-      "A full-stack RTI management platform that helps users create, submit, and track Right to Information requests.",
+      "A complete web platform that enables citizens to file RTI requests, track progress, and communicate with government departments.",
     technologies: [
       "React.js",
       "Tailwind CSS",
@@ -102,21 +98,30 @@ export const projects: Project[] = [
       "MongoDB",
       "JWT",
       "AWS S3",
+      "Twilio",
+      "Nodemailer",
     ],
     githubUrl: "https://github.com/RAJA1404/RightToKnow",
     highlights: [
-      "Implemented JWT authentication for secure user access.",
-      "Added English and Tamil multi-language support.",
-      "Integrated AWS S3 storage for uploaded documents.",
-      "Built an AI-assisted smart RTI query builder and request tracking flow.",
+      "Citizen Dashboard",
+      "Department Dashboard",
+      "HOD Dashboard",
+      "Main Admin Dashboard",
+      "JWT Authentication",
+      "Role Based Access Control",
+      "Real Time Tracking",
+      "AI Assisted RTI Query Builder",
+      "Email Notifications",
+      "SMS Notifications",
+      "Cloud Storage",
     ],
   },
   {
-    title: "AI-Based Sign Language Recognition System",
+    title: "AI Sign Language Recognition",
     type: "AI / Computer Vision",
     description:
-      "A real-time deep learning system that translates sign language gestures into text.",
-    technologies: ["Python", "TensorFlow", "OpenCV", "Deep Learning"],
+      "Real-time sign language translation system converting gestures into text.",
+    technologies: ["Python", "TensorFlow", "OpenCV"],
     highlights: [
       "Captured and processed live gesture input with OpenCV.",
       "Used deep learning techniques to classify sign language gestures.",
@@ -124,11 +129,11 @@ export const projects: Project[] = [
     ],
   },
   {
-    title: "IoT-Based Smart Automation Physiotherapy Instrument",
+    title: "IoT Smart Automation Physiotherapy Instrument",
     type: "IoT / Embedded Systems",
     description:
-      "A smart rehabilitation instrument for tracking joint physiotherapy exercises in real time.",
-    technologies: ["ESP32", "Flex Sensors", "Force Sensors", "Motor Mechanism"],
+      "Automated rehabilitation system for physiotherapy exercises.",
+    technologies: ["ESP32", "Sensors", "IoT"],
     highlights: [
       "Used sensors to capture joint movement and exercise force data.",
       "Integrated ESP32 for real-time monitoring and device control.",
@@ -139,8 +144,8 @@ export const projects: Project[] = [
     title: "Car Parking Management System",
     type: "Java Application",
     description:
-      "A Java-based parking management system for maintaining real-time parking records.",
-    technologies: ["Java", "OOPs", "File Handling"],
+      "Vehicle parking management and slot allocation system.",
+    technologies: ["Java", "OOP", "File Handling"],
     highlights: [
       "Applied object-oriented programming principles to organize parking workflows.",
       "Used file handling to store and manage parking records.",
@@ -152,16 +157,41 @@ export const projects: Project[] = [
 export const experiences: Experience[] = [
   {
     company: "Trios Technologies",
-    role: "Intern",
+    role: "Deep Learning Intern",
+    period: "June 2025 - July 2025",
     description:
-      "Worked on practical software development tasks and strengthened full-stack development fundamentals.",
-    technologies: ["Web Development", "JavaScript", "Team Collaboration"],
+      "Worked on deep learning workflows with practical model development, preprocessing, and training tasks.",
+    technologies: [
+      "TensorFlow",
+      "Deep Learning",
+      "Data Preprocessing",
+      "Model Training",
+    ],
   },
   {
     company: "F5Coders",
-    role: "Intern",
+    role: "AIML Intern",
+    period: "December 2025 - January 2026",
     description:
-      "Contributed to development workflows while building hands-on experience with modern web technologies.",
-    technologies: ["Frontend Development", "Backend APIs", "GitHub"],
+      "Built machine learning foundations through data analysis, model development, and predictive modeling practice.",
+    technologies: ["NumPy", "Pandas", "Scikit-Learn", "Predictive Modeling"],
+  },
+];
+
+export const certifications: Certification[] = [
+  {
+    title: "Artificial Intelligence and Data Science",
+    issuer: "Academic Specialization",
+    status: "In progress",
+  },
+  {
+    title: "Full Stack Development Practice",
+    issuer: "Project-based learning",
+    status: "Portfolio verified",
+  },
+  {
+    title: "Machine Learning and Computer Vision",
+    issuer: "Hands-on implementation",
+    status: "Project verified",
   },
 ];

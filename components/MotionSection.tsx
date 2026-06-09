@@ -19,7 +19,7 @@ export default function MotionSection({
   return (
     <motion.section
       id={id}
-      className={`scroll-mt-28 px-5 py-24 sm:px-8 lg:px-12 ${className}`}
+      className={`scroll-mt-24 px-4 py-16 sm:scroll-mt-28 sm:px-8 sm:py-24 lg:px-12 ${className}`}
       initial={reveal ? { opacity: 0, y: 40 } : false}
       whileInView={reveal ? { opacity: 1, y: 0 } : undefined}
       transition={{ duration: 0.6, ease: "easeOut" }}

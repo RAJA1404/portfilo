@@ -31,16 +31,16 @@ export default function EngineeringPractices() {
       />
       <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
         <motion.article
-          className="rounded-3xl border border-white/10 bg-white/[0.04] p-7 backdrop-blur"
+          className="rounded-3xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur sm:p-7"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: false, amount: 0.2 }}
         >
-          <span className="inline-flex rounded-full border border-blue-400/40 bg-blue-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-blue-200">
+          <span className="inline-flex max-w-full rounded-full border border-blue-400/40 bg-blue-500/10 px-4 py-2 text-xs font-semibold uppercase leading-5 tracking-[0.12em] text-blue-200 sm:tracking-[0.18em]">
             Automated Deployment via GitHub Actions / Vercel
           </span>
-          <p className="mt-6 text-lg leading-8 text-zinc-300">
+          <p className="mt-6 text-base leading-7 text-zinc-300 sm:text-lg sm:leading-8">
             Portfolio updates follow a GitHub-first workflow with build
             verification before deployment and automatic publishing when changes
             are pushed to the main branch on Vercel.
@@ -57,7 +57,7 @@ export default function EngineeringPractices() {
           {practices.map((practice) => (
             <div
               key={practice}
-              className="rounded-2xl border border-white/10 bg-black/25 p-5 text-sm font-semibold text-zinc-200 transition hover:border-blue-400/40 hover:bg-white/[0.06]"
+              className="rounded-2xl border border-white/10 bg-black/25 p-4 text-sm font-semibold text-zinc-200 transition hover:border-blue-400/40 hover:bg-white/[0.06] sm:p-5"
             >
               {practice}
             </div>
@@ -66,7 +66,7 @@ export default function EngineeringPractices() {
       </div>
 
       <motion.div
-        className="mt-6 rounded-3xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur"
+        className="mt-6 rounded-3xl border border-white/10 bg-white/[0.04] p-4 backdrop-blur sm:p-5"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}

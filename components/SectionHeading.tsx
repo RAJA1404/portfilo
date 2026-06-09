@@ -12,9 +12,9 @@ export default function SectionHeading({
   const words = title.split(" ");
 
   return (
-    <div className="mb-12 max-w-5xl sm:mb-16">
+    <div className="mb-9 max-w-5xl sm:mb-16">
       <p className="text-sm font-semibold uppercase text-blue-400">{eyebrow}</p>
-      <h2 className="mt-4 max-w-4xl text-4xl font-semibold leading-tight text-white sm:text-6xl">
+      <h2 className="mt-4 max-w-4xl text-3xl font-semibold leading-tight text-white sm:text-6xl">
         {words.map((word, index) => (
           <span
             key={`${word}-${index}`}
@@ -25,7 +25,7 @@ export default function SectionHeading({
         ))}
       </h2>
       {description ? (
-        <p className="mt-6 max-w-2xl text-base leading-8 text-zinc-400 sm:text-lg">
+        <p className="mt-5 max-w-2xl text-base leading-7 text-zinc-400 sm:mt-6 sm:text-lg sm:leading-8">
           {description}
         </p>
       ) : null}

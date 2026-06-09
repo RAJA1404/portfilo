@@ -22,11 +22,11 @@ export default function Skills() {
         title="A sharp toolkit for intelligent products."
         description="Skills are grouped as product-building systems: code, interface, backend, data, AI, and delivery tools."
       />
-      <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+      <div className="grid min-w-0 gap-5 md:grid-cols-2 xl:grid-cols-3">
         {skillCategories.map((category) => (
           <motion.article
             key={category.title}
-            className="group relative min-h-56 overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] p-7 backdrop-blur transition hover:border-blue-400/40 hover:bg-white/[0.07]"
+            className="group relative min-h-56 min-w-0 overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur transition hover:border-blue-400/40 hover:bg-white/[0.07] sm:p-7"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             whileHover={{ y: -8, scale: 1.01 }}
@@ -38,12 +38,12 @@ export default function Skills() {
                 categoryMeta[category.title]?.accent ?? "from-blue-500/20 to-white/5"
               } opacity-70 transition group-hover:opacity-100`}
             />
-            <div className="relative flex items-start justify-between gap-4">
+            <div className="relative flex items-start justify-between gap-3 sm:gap-4">
               <div>
                 <p className="text-xs font-semibold text-blue-300">
                   {categoryMeta[category.title]?.code ?? "00"}
                 </p>
-                <h3 className="mt-2 text-2xl font-semibold text-white">
+                <h3 className="mt-2 text-xl font-semibold text-white sm:text-2xl">
                   {category.title}
                 </h3>
               </div>
@@ -51,11 +51,11 @@ export default function Skills() {
                 {category.skills.length} skills
               </div>
             </div>
-            <div className="relative mt-6 grid gap-3">
+            <div className="relative mt-5 grid gap-3 sm:mt-6">
               {category.skills.map((skill, skillIndex) => (
                 <motion.div
                   key={skill.name}
-                  className="rounded-2xl border border-white/10 bg-black/35 p-4 transition group-hover:border-white/20"
+                  className="min-w-0 rounded-2xl border border-white/10 bg-black/35 p-4 transition group-hover:border-white/20"
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{

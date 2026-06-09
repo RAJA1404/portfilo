@@ -20,6 +20,11 @@ import { profile } from "@/data/portfolioData";
 
 const title = "RAJA K C";
 const subtitle = "AI & Data Science Student\nFull Stack Developer & IoT Innovator";
+const mobileRoles = [
+  "AI & Data Science Student",
+  "Full Stack Developer &",
+  "IoT Innovator",
+];
 const socialLinks = [
   { label: "GitHub", href: profile.githubUrl },
   { label: "LinkedIn", href: profile.linkedinUrl },
@@ -164,14 +169,180 @@ export default function Hero() {
     <section
       id="home"
       onMouseMove={handleMove}
-      className="relative flex min-h-screen items-center overflow-hidden px-5 pb-20 pt-32 sm:px-8 lg:px-12"
+      className="relative flex items-center overflow-hidden px-4 pb-10 pt-24 md:min-h-screen md:px-8 md:pb-20 md:pt-32 lg:px-12"
     >
       <HeroParticles />
       <motion.div
         className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.18),transparent_28rem),radial-gradient(circle_at_80%_10%,rgba(139,92,246,0.16),transparent_30rem)]"
         style={reducedMotion ? undefined : { x: cardX, y: cardY }}
       />
-      <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-14 lg:grid-cols-[1.1fr_0.9fr]">
+      <div className="relative z-10 mx-auto w-full max-w-7xl md:hidden">
+        <motion.p
+          className="overflow-hidden text-xs font-semibold uppercase tracking-[0.12em] text-blue-300"
+          initial={false}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.75, ease: "easeOut" }}
+        >
+          Portfolio / AI Product Builder / 2026
+        </motion.p>
+
+        <h1 className="mt-5 flex flex-wrap text-[clamp(2.75rem,14vw,4rem)] font-semibold leading-[0.92] text-white">
+          {title.split("").map((char, index) => (
+            <motion.span
+              key={`mobile-${char}-${index}`}
+              className={char === " " ? "w-4" : "inline-block"}
+              initial={{ opacity: 0, y: 32 }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{
+                delay: index * 0.05,
+                duration: 0.55,
+                ease: "easeOut",
+              }}
+            >
+              {char}
+            </motion.span>
+          ))}
+        </h1>
+
+        <motion.div
+          className="mt-7 flex justify-center"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.75, ease: premiumEase }}
+        >
+          <Tilt
+            tiltMaxAngleX={8}
+            tiltMaxAngleY={8}
+            glareEnable={true}
+            glareMaxOpacity={0.12}
+            glareColor="#6366f1"
+            scale={1.02}
+            transitionSpeed={400}
+          >
+            <div
+              style={{
+                position: "relative",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <div
+                style={{
+                  position: "absolute",
+                  width: "clamp(220px, 64vw, 270px)",
+                  height: "clamp(220px, 64vw, 270px)",
+                  borderRadius: "50%",
+                  background:
+                    "radial-gradient(circle, rgba(99,102,241,0.2) 0%, transparent 65%)",
+                  zIndex: 0,
+                  pointerEvents: "none",
+                }}
+              />
+              <div
+                style={{
+                  position: "relative",
+                  width: "clamp(198px, 58vw, 245px)",
+                  height: "clamp(198px, 58vw, 245px)",
+                  zIndex: 1,
+                  maskImage:
+                    "radial-gradient(circle at 50% 50%, black 45%, rgba(0,0,0,0.5) 60%, transparent 72%)",
+                  WebkitMaskImage:
+                    "radial-gradient(circle at 50% 50%, black 45%, rgba(0,0,0,0.5) 60%, transparent 72%)",
+                }}
+              >
+                <Image
+                  src="/raja.jpg"
+                  alt="Raja K C"
+                  width={245}
+                  height={245}
+                  quality={95}
+                  style={{
+                    objectFit: "cover",
+                    objectPosition: "center 5%",
+                    width: "100%",
+                    height: "100%",
+                    imageRendering: "auto",
+                  }}
+                  priority
+                />
+              </div>
+            </div>
+          </Tilt>
+        </motion.div>
+
+        <motion.p
+          className="mt-7 text-xl font-semibold leading-snug text-zinc-100"
+          initial={{ opacity: 0, x: -24 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.65, delay: 0.95, ease: "easeOut" }}
+        >
+          {mobileRoles.map((line) => (
+            <span key={line} className="block">
+              {line}
+            </span>
+          ))}
+        </motion.p>
+
+        <motion.p
+          className="mt-5 max-w-xl text-base leading-7 text-zinc-400"
+          initial={false}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.7, delay: 1.15, ease: premiumEase }}
+        >
+          Building full-stack applications, AI solutions, and IoT systems for
+          real-world problems.
+        </motion.p>
+
+        <div className="mt-7 flex flex-col gap-3">
+          {[
+            { label: "View Projects", href: "#projects", primary: true },
+            { label: "Download Resume", href: profile.resumeUrl },
+          ].map((button, index) => (
+            <motion.a
+              key={button.label}
+              href={button.href}
+              className={`min-h-11 rounded-full px-6 py-3 text-center text-sm font-semibold transition ${
+                button.primary
+                  ? "bg-blue-500 text-white shadow-2xl shadow-blue-500/25"
+                  : "border border-white/15 text-white hover:bg-white/10"
+              }`}
+              custom={index}
+              initial="hidden"
+              animate="visible"
+              variants={buttonVariants}
+              whileTap={{ scale: 0.98 }}
+            >
+              {button.label}
+            </motion.a>
+          ))}
+        </div>
+
+        <motion.div
+          className="mt-6 flex flex-wrap gap-4 text-sm text-zinc-400"
+          initial={false}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.7, delay: 1.45 }}
+        >
+          {socialLinks.map((link) => (
+            <motion.a
+              key={link.label}
+              href={link.href}
+              target={link.href.startsWith("mailto:") ? undefined : "_blank"}
+              rel={link.href.startsWith("mailto:") ? undefined : "noreferrer"}
+              className="relative hover:text-white"
+              whileTap={{ scale: 0.98 }}
+            >
+              {link.label}
+            </motion.a>
+          ))}
+        </motion.div>
+      </div>
+
+      <div className="relative z-10 mx-auto hidden w-full max-w-7xl items-center gap-14 md:grid lg:grid-cols-[1.1fr_0.9fr]">
         <div>
           <motion.p
             className="overflow-hidden text-sm font-semibold uppercase text-blue-300"
@@ -181,11 +352,11 @@ export default function Hero() {
           >
             Portfolio / AI Product Builder / 2026
           </motion.p>
-          <h1 className="mt-6 flex flex-wrap text-6xl font-semibold leading-[0.9] text-white sm:text-8xl lg:text-9xl">
+          <h1 className="mt-6 flex flex-wrap text-8xl font-semibold leading-[0.9] text-white lg:text-9xl">
             {title.split("").map((char, index) => (
               <motion.span
                 key={`${char}-${index}`}
-                className={char === " " ? "w-5 sm:w-8" : "inline-block"}
+                className={char === " " ? "w-8" : "inline-block"}
                 initial={{ opacity: 0, y: 40 }}
                 animate={{
                   opacity: 1,
@@ -202,7 +373,7 @@ export default function Hero() {
             ))}
           </h1>
           <motion.p
-            className="mt-7 text-2xl font-semibold text-zinc-100 sm:text-4xl"
+            className="mt-7 text-4xl font-semibold text-zinc-100"
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.8, ease: "easeOut" }}
@@ -214,7 +385,7 @@ export default function Hero() {
             ))}
           </motion.p>
           <motion.p
-            className="mt-7 max-w-2xl text-lg leading-8 text-zinc-400 sm:text-xl"
+            className="mt-7 max-w-2xl text-xl leading-8 text-zinc-400"
             initial={false}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 0.75, delay: 1.35, ease: premiumEase }}
@@ -222,7 +393,7 @@ export default function Hero() {
             Building full stack applications, AI-powered solutions, and IoT
             systems that connect clean interfaces with practical engineering.
           </motion.p>
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-10 flex flex-row gap-3">
             {[
               { label: "View Projects", href: "#projects", primary: true },
               { label: "Download Resume", href: profile.resumeUrl },

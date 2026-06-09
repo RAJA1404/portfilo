@@ -19,12 +19,12 @@ export default function About() {
           description="Raja K C is an Artificial Intelligence and Data Science student building MERN stack applications, AI-assisted workflows, and IoT systems with clear product use cases."
         />
         <div className="space-y-6">
-          <p className="text-2xl leading-relaxed text-white sm:text-3xl">
+          <p className="text-xl leading-relaxed text-white sm:text-3xl">
             I build software around practical problems: full-stack dashboards,
             REST APIs, AI prototypes, and IoT systems that connect data,
             devices, and users.
           </p>
-          <p className="max-w-3xl text-lg leading-8 text-zinc-400">
+          <p className="max-w-3xl text-base leading-7 text-zinc-400 sm:text-lg sm:leading-8">
             Currently pursuing {education.degree} at {education.institution},
             {` ${education.location}`}. My work is centered on React, Node.js,
             Express, MongoDB, TensorFlow, and embedded systems, with
@@ -35,7 +35,7 @@ export default function About() {
             {metrics.map((metric) => (
               <div
                 key={metric.label}
-                className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur"
+                className="rounded-3xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur sm:p-6"
               >
                 <p className="text-3xl font-semibold text-white">
                   {metric.value}
@@ -56,7 +56,7 @@ export default function About() {
           </div>
           <a
             href={`mailto:${profile.email}`}
-            className="inline-flex rounded-full border border-blue-400/40 bg-blue-500/10 px-6 py-3 text-sm font-semibold text-blue-200 transition hover:-translate-y-1 hover:bg-blue-500/20"
+            className="inline-flex min-h-12 w-full justify-center rounded-full border border-blue-400/40 bg-blue-500/10 px-6 py-3 text-sm font-semibold text-blue-200 transition hover:-translate-y-1 hover:bg-blue-500/20 sm:w-auto"
           >
             Start a conversation
           </a>

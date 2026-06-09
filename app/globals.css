@@ -65,6 +65,12 @@ section {
   color: white;
 }
 
+@keyframes skill-shimmer {
+  0% { opacity: 0.4; }
+  50% { opacity: 1; }
+  100% { opacity: 0.4; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

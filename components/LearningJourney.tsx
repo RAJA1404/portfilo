@@ -18,7 +18,7 @@ export default function LearningJourneySection({ items }: LearningJourneyProps) 
         {items.map((item, index) => (
           <article
             key={item.title}
-            className="rounded-3xl border border-white/10 bg-white/[0.04] p-7 backdrop-blur"
+            className="rounded-3xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur sm:p-7"
             style={{ transform: `translateY(${index * 18}px)` }}
           >
             <p className="text-sm font-semibold text-violet-300">

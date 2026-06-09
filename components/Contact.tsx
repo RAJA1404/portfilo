@@ -106,7 +106,7 @@ export default function Contact() {
       />
       <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
         <motion.aside
-          className="rounded-3xl border border-white/10 bg-white/[0.04] p-7 backdrop-blur sm:p-8"
+          className="rounded-3xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur sm:p-8"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
@@ -115,13 +115,13 @@ export default function Contact() {
           <p className="text-sm font-semibold uppercase text-blue-300">
             Contact Details
           </p>
-          <h3 className="mt-4 text-3xl font-semibold text-white">Raja K C</h3>
+          <h3 className="mt-4 text-2xl font-semibold text-white sm:text-3xl">Raja K C</h3>
           <div className="mt-7 space-y-5">
             <div>
               <p className="text-sm text-zinc-500">Email</p>
               <a
                 href={`mailto:${profile.email}`}
-                className="mt-1 block text-lg font-semibold text-white transition hover:text-blue-300"
+                className="mt-1 block break-words text-base font-semibold text-white transition hover:text-blue-300 sm:text-lg"
               >
                 {profile.email}
               </a>
@@ -147,7 +147,7 @@ export default function Contact() {
                   rel={
                     link.href.startsWith("mailto:") ? undefined : "noreferrer"
                   }
-                  className="rounded-full border border-white/10 bg-black/25 px-4 py-2 text-sm font-medium text-zinc-300 transition hover:border-blue-400/40 hover:text-white"
+                  className="min-h-11 rounded-full border border-white/10 bg-black/25 px-4 py-2.5 text-sm font-medium text-zinc-300 transition hover:border-blue-400/40 hover:text-white"
                 >
                   {link.label}
                 </a>
@@ -164,7 +164,7 @@ export default function Contact() {
 
         <motion.form
           onSubmit={handleSubmit}
-          className="rounded-3xl border border-white/10 bg-white/[0.04] p-7 backdrop-blur sm:p-8"
+          className="rounded-3xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur sm:p-8"
           noValidate
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -201,7 +201,7 @@ export default function Contact() {
               <input
                 value={form.name}
                 onChange={(event) => updateField("name", event.target.value)}
-                className="mt-2 w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-white outline-none transition placeholder:text-zinc-600 focus:border-blue-400/60"
+                className="mt-2 min-h-12 w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-white outline-none transition placeholder:text-zinc-600 focus:border-blue-400/60"
                 placeholder="Your name"
               />
               {errors.name ? (
@@ -213,7 +213,7 @@ export default function Contact() {
               <input
                 value={form.email}
                 onChange={(event) => updateField("email", event.target.value)}
-                className="mt-2 w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-white outline-none transition placeholder:text-zinc-600 focus:border-blue-400/60"
+                className="mt-2 min-h-12 w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-white outline-none transition placeholder:text-zinc-600 focus:border-blue-400/60"
                 placeholder="you@example.com"
                 type="email"
               />
@@ -238,7 +238,7 @@ export default function Contact() {
             <motion.button
               type="submit"
               disabled={isSubmitting}
-              className="rounded-full bg-blue-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/20 transition hover:bg-blue-400"
+              className="min-h-12 w-full rounded-full bg-blue-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/20 transition hover:bg-blue-400 sm:w-auto"
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -246,7 +246,7 @@ export default function Contact() {
             </motion.button>
             <a
               href={`mailto:${profile.email}`}
-              className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/10"
+              className="min-h-12 rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/10"
             >
               Open Email
             </a>

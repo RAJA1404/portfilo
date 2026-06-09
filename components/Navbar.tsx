@@ -60,19 +60,19 @@ export default function Navbar() {
 
   return (
     <motion.header
-      className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-8"
+      className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-8 sm:pt-4"
       initial={false}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 1, ease: [0.22, 1, 0.36, 1] }}
     >
-      <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between rounded-full border border-white/10 bg-[#050505]/70 px-3 shadow-2xl shadow-black/30 backdrop-blur-2xl">
+      <nav className="mx-auto flex h-14 max-w-7xl items-center justify-between rounded-full border border-white/10 bg-[#050505]/70 px-2.5 shadow-2xl shadow-black/30 backdrop-blur-2xl sm:h-16 sm:px-3">
         <motion.a
           href="#home"
-          className="flex items-center gap-3 rounded-full px-2"
+          className="flex items-center gap-2 rounded-full px-2 sm:gap-3"
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.98 }}
         >
-          <span className="grid h-10 w-10 place-items-center rounded-full border border-blue-400/30 bg-blue-500/10 text-sm font-bold text-blue-200">
+          <span className="grid h-9 w-9 place-items-center rounded-full border border-blue-400/30 bg-blue-500/10 text-sm font-bold text-blue-200 sm:h-10 sm:w-10">
             RK
           </span>
           <span className="hidden text-sm font-semibold text-white sm:inline">
@@ -140,7 +140,7 @@ export default function Navbar() {
         {isMenuOpen ? (
           <motion.div
             id="mobile-navigation-menu"
-            className="mx-auto mt-3 max-w-7xl overflow-hidden rounded-3xl border border-white/10 bg-[#050505]/90 p-3 shadow-2xl shadow-black/40 backdrop-blur-2xl md:hidden"
+            className="mx-auto mt-3 max-h-[calc(100dvh-5rem)] max-w-7xl overflow-y-auto overscroll-contain rounded-3xl border border-white/10 bg-[#050505]/90 p-3 shadow-2xl shadow-black/40 backdrop-blur-2xl md:hidden"
             initial={{ opacity: 0, y: -10, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.98 }}
@@ -151,7 +151,7 @@ export default function Navbar() {
                 <motion.a
                   key={link.href}
                   href={link.href}
-                  className="relative rounded-2xl px-4 py-3 text-sm font-medium text-zinc-300"
+                  className="relative min-h-11 rounded-2xl px-4 py-3 text-sm font-medium text-zinc-300"
                   onClick={() => setIsMenuOpen(false)}
                   initial={{ opacity: 0, y: -6 }}
                   animate={{ opacity: 1, y: 0 }}

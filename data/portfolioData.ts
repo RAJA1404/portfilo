@@ -34,16 +34,14 @@ export interface ProjectScreenshot {
   alt: string;
 }
 
-export interface SkillCategory {
-  title: string;
-  skills: Skill[];
-  usedIn: string;
-}
+export type SkillCategoryName = "Frontend" | "Backend" | "AI / ML" | "Tools";
 
-export interface Skill {
+export interface TechSkill {
   name: string;
   logo: string;
-  usedIn: string[];
+  category: SkillCategoryName;
+  projectsUsedIn: string[];
+  keyConcepts: string[];
 }
 
 export interface Experience {
@@ -91,153 +89,167 @@ export const focusAreas = [
   "Real-world Problem Solving",
 ];
 
-export const skillCategories: SkillCategory[] = [
+export const skillCategoryOrder: SkillCategoryName[] = [
+  "Frontend",
+  "Backend",
+  "AI / ML",
+  "Tools",
+];
+
+export const techSkills: TechSkill[] = [
+  // ── Frontend ──────────────────────────────────────────────
   {
-    title: "Programming",
-    skills: [
-      {
-        name: "Java",
-        logo: "JV",
-        usedIn: ["Car Parking Management System"],
-      },
-      {
-        name: "Python",
-        logo: "PY",
-        usedIn: ["AI Sign Language Recognition", "AIML internship work"],
-      },
-      {
-        name: "JavaScript",
-        logo: "JS",
-        usedIn: ["RightToKnow", "College LMS Portal"],
-      },
-    ],
-    usedIn:
-      "Applied across Java file-handling systems, AI prototypes, and full-stack web projects.",
+    name: "React",
+    logo: "/logos/react.svg",
+    category: "Frontend",
+    projectsUsedIn: ["RightToKnow", "College LMS Portal"],
+    keyConcepts: ["Hooks", "Component Architecture", "State Management", "JSX"],
   },
   {
-    title: "Frontend",
-    skills: [
-      {
-        name: "React.js",
-        logo: "RE",
-        usedIn: ["RightToKnow", "College LMS Portal"],
-      },
-      {
-        name: "Next.js",
-        logo: "NX",
-        usedIn: ["Personal Portfolio"],
-      },
-      {
-        name: "HTML",
-        logo: "H5",
-        usedIn: ["Portfolio interfaces", "Dashboard screens"],
-      },
-      {
-        name: "CSS",
-        logo: "CSS",
-        usedIn: ["Responsive layouts", "Dashboard styling"],
-      },
-      {
-        name: "Tailwind CSS",
-        logo: "TW",
-        usedIn: ["RightToKnow", "Personal Portfolio"],
-      },
-    ],
-    usedIn:
-      "Used to build responsive dashboards, portfolio interfaces, and the RightToKnow citizen-facing experience.",
+    name: "Next.js",
+    logo: "/logos/nextjs.svg",
+    category: "Frontend",
+    projectsUsedIn: ["Personal Portfolio"],
+    keyConcepts: ["SSR", "App Router", "File-based Routing", "Server Components"],
   },
   {
-    title: "Backend",
-    skills: [
-      {
-        name: "Node.js",
-        logo: "ND",
-        usedIn: ["RightToKnow", "College LMS Portal"],
-      },
-      {
-        name: "Express.js",
-        logo: "EX",
-        usedIn: ["RightToKnow", "College LMS Portal"],
-      },
-      {
-        name: "REST APIs",
-        logo: "API",
-        usedIn: ["RightToKnow", "College LMS Portal"],
-      },
-    ],
-    usedIn:
-      "Used for authentication, dashboard APIs, request workflows, and MERN application modules.",
+    name: "Tailwind CSS",
+    logo: "/logos/tailwind.svg",
+    category: "Frontend",
+    projectsUsedIn: ["RightToKnow", "Personal Portfolio"],
+    keyConcepts: ["Utility-first CSS", "Responsive Design", "Design Tokens"],
   },
   {
-    title: "Database",
-    skills: [
-      {
-        name: "MongoDB",
-        logo: "DB",
-        usedIn: ["RightToKnow", "College LMS Portal"],
-      },
-    ],
-    usedIn:
-      "Used for storing users, requests, records, project data, and role-based application state.",
+    name: "JavaScript",
+    logo: "/logos/javascript.svg",
+    category: "Frontend",
+    projectsUsedIn: ["RightToKnow", "College LMS Portal", "Personal Portfolio"],
+    keyConcepts: ["ES6+", "Async/Await", "DOM Manipulation", "Closures"],
   },
   {
-    title: "AI & ML",
-    skills: [
-      {
-        name: "TensorFlow",
-        logo: "TF",
-        usedIn: ["AI Sign Language Recognition", "Deep Learning internship"],
-      },
-      {
-        name: "Machine Learning",
-        logo: "ML",
-        usedIn: ["AIML internship work", "Predictive modeling practice"],
-      },
-      {
-        name: "Deep Learning",
-        logo: "DL",
-        usedIn: ["AI Sign Language Recognition", "Trios Technologies"],
-      },
-      {
-        name: "NLP",
-        logo: "NLP",
-        usedIn: ["RightToKnow AI query builder"],
-      },
-    ],
-    usedIn:
-      "Used in sign language recognition, predictive modeling practice, and AI-assisted RTI query building.",
+    name: "HTML",
+    logo: "/logos/html.svg",
+    category: "Frontend",
+    projectsUsedIn: ["RightToKnow", "College LMS Portal", "Personal Portfolio"],
+    keyConcepts: ["Semantic HTML", "Accessibility", "SEO", "Forms"],
   },
   {
-    title: "Tools",
-    skills: [
-      {
-        name: "Git",
-        logo: "GT",
-        usedIn: ["RightToKnow", "College LMS Portal"],
-      },
-      {
-        name: "GitHub",
-        logo: "GH",
-        usedIn: ["Project version control", "Portfolio repositories"],
-      },
-      {
-        name: "Postman",
-        logo: "PM",
-        usedIn: ["REST API testing", "Backend validation"],
-      },
-      {
-        name: "Tableau",
-        logo: "TB",
-        usedIn: ["Data exploration", "Analytics practice"],
-      },
-      {
-        name: "ESP32",
-        logo: "32",
-        usedIn: ["Physiotherapy Instrument"],
-      },
-    ],
-    usedIn:
-      "Used for API testing, source control, collaboration, data exploration, IoT prototyping, and project delivery.",
+    name: "CSS",
+    logo: "/logos/css.svg",
+    category: "Frontend",
+    projectsUsedIn: ["RightToKnow", "College LMS Portal", "Personal Portfolio"],
+    keyConcepts: ["Flexbox", "Grid", "Animations", "Responsive Layouts"],
+  },
+
+  // ── Backend ───────────────────────────────────────────────
+  {
+    name: "Node.js",
+    logo: "/logos/nodejs.svg",
+    category: "Backend",
+    projectsUsedIn: ["RightToKnow", "College LMS Portal"],
+    keyConcepts: ["Event Loop", "NPM Ecosystem", "Middleware", "Streams"],
+  },
+  {
+    name: "Express.js",
+    logo: "/logos/expressjs.svg",
+    category: "Backend",
+    projectsUsedIn: ["RightToKnow", "College LMS Portal"],
+    keyConcepts: ["REST APIs", "Middleware", "Routing", "Error Handling"],
+  },
+  {
+    name: "MongoDB",
+    logo: "/logos/mongodb.svg",
+    category: "Backend",
+    projectsUsedIn: ["RightToKnow", "College LMS Portal"],
+    keyConcepts: ["Aggregation", "Mongoose", "Schema Design", "Indexing"],
+  },
+  {
+    name: "REST APIs",
+    logo: "/logos/rest-api.svg",
+    category: "Backend",
+    projectsUsedIn: ["RightToKnow", "College LMS Portal"],
+    keyConcepts: ["JWT", "RBAC", "CRUD", "API Design"],
+  },
+
+  // ── AI / ML ───────────────────────────────────────────────
+  {
+    name: "Python",
+    logo: "/logos/python.svg",
+    category: "AI / ML",
+    projectsUsedIn: ["AI Sign Language Recognition"],
+    keyConcepts: ["NumPy", "Pandas", "Scikit-Learn", "Data Pipelines"],
+  },
+  {
+    name: "TensorFlow",
+    logo: "/logos/tensorflow.svg",
+    category: "AI / ML",
+    projectsUsedIn: ["AI Sign Language Recognition"],
+    keyConcepts: ["CNN Models", "Model Training", "Keras", "Transfer Learning"],
+  },
+  {
+    name: "OpenCV",
+    logo: "/logos/opencv.svg",
+    category: "AI / ML",
+    projectsUsedIn: ["AI Sign Language Recognition"],
+    keyConcepts: ["Image Processing", "Video Capture", "Contour Detection", "Computer Vision"],
+  },
+  {
+    name: "Machine Learning",
+    logo: "/logos/machine-learning.svg",
+    category: "AI / ML",
+    projectsUsedIn: ["AI Sign Language Recognition"],
+    keyConcepts: ["Supervised Learning", "Feature Engineering", "Model Evaluation", "Predictive Modeling"],
+  },
+  {
+    name: "Deep Learning",
+    logo: "/logos/deep-learning.svg",
+    category: "AI / ML",
+    projectsUsedIn: ["AI Sign Language Recognition"],
+    keyConcepts: ["CNN", "Neural Networks", "Backpropagation", "Epoch Training"],
+  },
+  {
+    name: "NLP",
+    logo: "/logos/nlp.svg",
+    category: "AI / ML",
+    projectsUsedIn: ["RightToKnow"],
+    keyConcepts: ["Text Processing", "Query Building", "Tokenization", "AI Drafting"],
+  },
+
+  // ── Tools ─────────────────────────────────────────────────
+  {
+    name: "Git",
+    logo: "/logos/git.svg",
+    category: "Tools",
+    projectsUsedIn: ["RightToKnow", "College LMS Portal", "Personal Portfolio"],
+    keyConcepts: ["Branching", "Merge Conflicts", "Version Control", "Git Flow"],
+  },
+  {
+    name: "GitHub",
+    logo: "/logos/github.svg",
+    category: "Tools",
+    projectsUsedIn: ["RightToKnow", "College LMS Portal", "Personal Portfolio"],
+    keyConcepts: ["Pull Requests", "Actions", "Collaboration", "Repository Management"],
+  },
+  {
+    name: "Postman",
+    logo: "/logos/postman.svg",
+    category: "Tools",
+    projectsUsedIn: ["RightToKnow", "College LMS Portal"],
+    keyConcepts: ["API Testing", "Collections", "Environment Variables", "Automated Tests"],
+  },
+  {
+    name: "Vercel",
+    logo: "/logos/vercel.svg",
+    category: "Tools",
+    projectsUsedIn: ["Personal Portfolio"],
+    keyConcepts: ["Deployment", "Serverless", "Edge Network", "CI/CD"],
+  },
+  {
+    name: "ESP32",
+    logo: "/logos/esp32.svg",
+    category: "Tools",
+    projectsUsedIn: ["IoT Smart Automation Physiotherapy Instrument"],
+    keyConcepts: ["Microcontroller", "Sensor Integration", "IoT Protocols", "Real-time Monitoring"],
   },
 ];
 

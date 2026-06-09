@@ -9,14 +9,25 @@ export default function SectionHeading({
   title,
   description,
 }: SectionHeadingProps) {
+  const words = title.split(" ");
+
   return (
-    <div className="mx-auto mb-10 max-w-3xl text-center sm:mb-14">
+    <div className="mb-12 max-w-5xl sm:mb-16">
       <p className="text-sm font-semibold uppercase text-blue-400">{eyebrow}</p>
-      <h2 className="mt-3 text-3xl font-semibold text-white sm:text-4xl">
-        {title}
+      <h2 className="mt-4 max-w-4xl text-4xl font-semibold leading-tight text-white sm:text-6xl">
+        {words.map((word, index) => (
+          <span
+            key={`${word}-${index}`}
+            className="mr-3 inline-block overflow-hidden align-bottom"
+          >
+            <span className="inline-block">{word}</span>
+          </span>
+        ))}
       </h2>
       {description ? (
-        <p className="mt-4 text-base leading-7 text-zinc-400">{description}</p>
+        <p className="mt-6 max-w-2xl text-base leading-8 text-zinc-400 sm:text-lg">
+          {description}
+        </p>
       ) : null}
     </div>
   );

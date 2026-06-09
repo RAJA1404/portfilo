@@ -19,19 +19,19 @@ export default function Skills() {
     <MotionSection id="skills">
       <SectionHeading
         eyebrow="Skills"
-        title="A focused stack for full-stack and AI product work."
-        description="Grouped capabilities across frontend, backend, tooling, and machine learning."
+        title="A sharp toolkit for intelligent products."
+        description="Skills are grouped as product-building systems: code, interface, backend, data, AI, and delivery tools."
       />
       <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-        {skillCategories.map((category, index) => (
+        {skillCategories.map((category) => (
           <motion.article
             key={category.title}
-            className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur transition hover:border-blue-400/40 hover:bg-white/[0.06]"
-            initial={false}
+            className="group relative min-h-56 overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] p-7 backdrop-blur transition hover:border-blue-400/40 hover:bg-white/[0.07]"
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             whileHover={{ y: -8, scale: 1.01 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.45, delay: index * 0.04 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: false, amount: 0.2 }}
           >
             <div
               className={`absolute inset-x-0 top-0 h-24 bg-gradient-to-br ${
@@ -43,7 +43,7 @@ export default function Skills() {
                 <p className="text-xs font-semibold text-blue-300">
                   {categoryMeta[category.title]?.code ?? "00"}
                 </p>
-                <h3 className="mt-2 text-xl font-semibold text-white">
+                <h3 className="mt-2 text-2xl font-semibold text-white">
                   {category.title}
                 </h3>
               </div>
@@ -51,18 +51,50 @@ export default function Skills() {
                 {category.skills.length} skills
               </div>
             </div>
-            <div className="relative mt-6 flex flex-wrap gap-2">
-              {category.skills.map((skill) => (
-                <motion.span
-                  key={skill}
-                  className="rounded-full border border-white/10 bg-black/35 px-3 py-1.5 text-sm text-zinc-300 transition group-hover:border-white/20 group-hover:text-white"
+            <div className="relative mt-6 grid gap-3">
+              {category.skills.map((skill, skillIndex) => (
+                <motion.div
+                  key={skill.name}
+                  className="rounded-2xl border border-white/10 bg-black/35 p-4 transition group-hover:border-white/20"
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.6,
+                    ease: "easeOut",
+                    delay: skillIndex * 0.1,
+                  }}
+                  viewport={{ once: false, amount: 0.2 }}
                   whileHover={{ y: -3, scale: 1.04 }}
-                  transition={{ duration: 0.2 }}
                 >
-                  {skill}
-                </motion.span>
+                  <div className="flex items-center gap-3">
+                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl border border-blue-400/30 bg-blue-500/10 text-xs font-bold text-blue-200">
+                      {skill.logo}
+                    </span>
+                    <div>
+                      <h4 className="text-sm font-semibold text-white">
+                        {skill.name}
+                      </h4>
+                      <p className="mt-1 text-xs font-semibold uppercase tracking-[0.16em] text-zinc-500">
+                        Used in
+                      </p>
+                    </div>
+                  </div>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {skill.usedIn.map((usage) => (
+                      <span
+                        key={usage}
+                        className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs text-zinc-400"
+                      >
+                        {usage}
+                      </span>
+                    ))}
+                  </div>
+                </motion.div>
               ))}
             </div>
+            <p className="relative mt-5 text-sm leading-6 text-zinc-400">
+              {category.usedIn}
+            </p>
           </motion.article>
         ))}
       </div>

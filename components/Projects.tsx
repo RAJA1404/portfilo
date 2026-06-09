@@ -1,32 +1,39 @@
-import { projects } from "@/data/portfolioData";
-import FeaturedProject from "./FeaturedProject";
+"use client";
+
+import { useCallback, useState } from "react";
+import { projects, type Project } from "@/data/portfolioData";
 import MotionSection from "./MotionSection";
 import ProjectCard from "./ProjectCard";
+import ProjectCaseStudyModal from "./ProjectCaseStudyModal";
 import SectionHeading from "./SectionHeading";
 
 export default function Projects() {
-  const [featuredProject, ...otherProjects] = projects;
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
+  const closeCaseStudy = useCallback(() => {
+    setSelectedProject(null);
+  }, []);
 
   return (
-    <MotionSection id="projects">
+    <MotionSection id="projects" reveal={false}>
       <SectionHeading
         eyebrow="Projects"
-        title="Product-minded builds across web, AI, IoT, and Java."
-        description="The portfolio highlights practical systems with clear technical decisions and real-world use cases."
+        title="Compact project stories with deeper case studies."
+        description="Recruiters can scan the core project lineup quickly, then open detailed case studies for architecture, contributions, challenges, and impact."
       />
-      <div className="space-y-6">
-        <FeaturedProject project={featuredProject} />
-        <div className="pt-8">
-          <p className="mb-4 text-sm font-semibold uppercase text-violet-300">
-            Other Projects
-          </p>
-          <div className="grid gap-6 lg:grid-cols-2">
-            {otherProjects.map((project) => (
-              <ProjectCard key={project.title} project={project} />
-            ))}
-          </div>
-        </div>
+      <div className="grid gap-6 lg:grid-cols-3">
+        {projects.map((project) => (
+          <ProjectCard
+            key={project.title}
+            project={project}
+            onViewCaseStudy={setSelectedProject}
+          />
+        ))}
       </div>
+      <ProjectCaseStudyModal
+        project={selectedProject}
+        onClose={closeCaseStudy}
+      />
     </MotionSection>
   );
 }

@@ -26,6 +26,8 @@ const socialLinks = [
   { label: "Email", href: `mailto:${profile.email}` },
 ];
 
+const formspreeEndpoint = "https://formspree.io/f/YOUR_FORM_ID"; // TODO: Replace with your Formspree form ID
+
 function validateForm(form: FormState) {
   const errors: FormErrors = {};
 
@@ -48,36 +50,68 @@ export default function Contact() {
   const [form, setForm] = useState<FormState>(initialForm);
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSent, setIsSent] = useState(false);
+  const [formError, setFormError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   function updateField(field: keyof FormState, value: string) {
     setForm((current) => ({ ...current, [field]: value }));
     setErrors((current) => ({ ...current, [field]: undefined }));
     setIsSent(false);
+    setFormError("");
   }
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     const nextErrors = validateForm(form);
     setErrors(nextErrors);
+    setFormError("");
 
     if (Object.keys(nextErrors).length > 0) {
       return;
     }
 
-    setIsSent(true);
-    setForm(initialForm);
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch(formspreeEndpoint, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
+
+      if (!response.ok) {
+        throw new Error("Formspree request failed");
+      }
+
+      setIsSent(true);
+      setForm(initialForm);
+    } catch {
+      setIsSent(false);
+      setFormError("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
     <MotionSection id="contact">
       <SectionHeading
         eyebrow="Contact"
-        title="Let us build something useful together."
+        title="The next build starts with a message."
         description="For internships, full-stack roles, AI projects, or collaboration opportunities, contact Raja directly."
       />
       <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
-        <aside className="rounded-3xl border border-white/10 bg-white/[0.04] p-7 backdrop-blur sm:p-8">
+        <motion.aside
+          className="rounded-3xl border border-white/10 bg-white/[0.04] p-7 backdrop-blur sm:p-8"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: false, amount: 0.2 }}
+        >
           <p className="text-sm font-semibold uppercase text-blue-300">
             Contact Details
           </p>
@@ -126,12 +160,16 @@ export default function Contact() {
           >
             Email Raja
           </a>
-        </aside>
+        </motion.aside>
 
-        <form
+        <motion.form
           onSubmit={handleSubmit}
           className="rounded-3xl border border-white/10 bg-white/[0.04] p-7 backdrop-blur sm:p-8"
           noValidate
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: false, amount: 0.2 }}
         >
           <AnimatePresence>
             {isSent ? (
@@ -143,6 +181,16 @@ export default function Contact() {
               >
                 Message validated successfully. Please send it through email to
                 continue the conversation.
+              </motion.div>
+            ) : null}
+            {formError ? (
+              <motion.div
+                className="mb-6 rounded-2xl border border-red-400/30 bg-red-500/10 px-5 py-4 text-sm font-medium text-red-200"
+                initial={{ opacity: 0, y: -12, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -12, scale: 0.98 }}
+              >
+                {formError}
               </motion.div>
             ) : null}
           </AnimatePresence>
@@ -189,11 +237,12 @@ export default function Contact() {
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
             <motion.button
               type="submit"
+              disabled={isSubmitting}
               className="rounded-full bg-blue-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/20 transition hover:bg-blue-400"
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.98 }}
             >
-              Send Message
+              {isSubmitting ? "Sending..." : "Send Message"}
             </motion.button>
             <a
               href={`mailto:${profile.email}`}
@@ -202,7 +251,7 @@ export default function Contact() {
               Open Email
             </a>
           </div>
-        </form>
+        </motion.form>
       </div>
     </MotionSection>
   );

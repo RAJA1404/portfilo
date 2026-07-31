@@ -1,6 +1,6 @@
 "use client";
 
-// imports removed
+import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 
 type MotionSectionProps = {
@@ -17,11 +17,15 @@ export default function MotionSection({
   reveal = true,
 }: MotionSectionProps) {
   return (
-    <section
+    <motion.section
       id={id}
       className={`scroll-mt-24 px-4 py-16 sm:scroll-mt-28 sm:px-8 sm:py-24 lg:px-12 ${className}`}
+      initial={reveal ? { opacity: 0, y: 40 } : false}
+      whileInView={reveal ? { opacity: 1, y: 0 } : undefined}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      viewport={{ once: false, amount: 0.2 }}
     >
       <div className="mx-auto max-w-7xl">{children}</div>
-    </section>
+    </motion.section>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import {
   techSkills,
@@ -11,6 +12,13 @@ import {
 import MotionSection from "./MotionSection";
 import SectionHeading from "./SectionHeading";
 import SkillDetailDrawer from "./SkillDetailDrawer";
+
+const categoryAccents: Record<SkillCategoryName, string> = {
+  Frontend: "from-blue-500/20 to-cyan-400/5",
+  Backend: "from-emerald-500/20 to-blue-400/5",
+  "AI / ML": "from-violet-500/20 to-fuchsia-400/5",
+  Tools: "from-amber-500/15 to-violet-400/5",
+};
 
 export default function Skills() {
   const [activeCategory, setActiveCategory] =
@@ -34,6 +42,7 @@ export default function Skills() {
   return (
     <MotionSection id="skills">
       <SectionHeading
+        eyebrow="Expertise"
         title="A sharp toolkit for intelligent products."
         description="Technologies I use to build production-ready full-stack systems, AI workflows, and IoT prototypes."
       />
@@ -42,10 +51,10 @@ export default function Skills() {
         <button
           type="button"
           onClick={() => setActiveCategory(null)}
-          className={`rounded-full border px-4 py-2 text-xs font-semibold tracking-wide transition-colors sm:text-sm ${
+          className={`rounded-full px-4 py-2 text-xs font-semibold tracking-wide transition-colors sm:text-sm ${
             activeCategory === null
-              ? "border-primary bg-primary/10 text-primary"
-              : "border-border bg-transparent text-muted hover:bg-border/30 hover:text-foreground"
+              ? "bg-white text-black"
+              : "bg-white/5 text-zinc-400 hover:bg-white/10 hover:text-white"
           }`}
         >
           All
@@ -57,10 +66,10 @@ export default function Skills() {
             onClick={() =>
               setActiveCategory(activeCategory === cat ? null : cat)
             }
-            className={`rounded-full border px-4 py-2 text-xs font-semibold tracking-wide transition-colors sm:text-sm ${
+            className={`rounded-full px-4 py-2 text-xs font-semibold tracking-wide transition-colors sm:text-sm ${
               activeCategory === cat
-                ? "border-primary bg-primary/10 text-primary"
-                : "border-border bg-transparent text-muted hover:bg-border/30 hover:text-foreground"
+                ? "bg-white text-black"
+                : "bg-white/5 text-zinc-400 hover:bg-white/10 hover:text-white"
             }`}
           >
             {cat}
@@ -69,53 +78,72 @@ export default function Skills() {
       </div>
 
       <div className="space-y-12">
-        {skillCategoryOrder
-          .filter((cat) => groupedSkills[cat])
-          .map((category) => (
-            <div key={category}>
-              <div className="mb-5 flex items-center gap-4">
-                <h3 className="text-xs font-bold uppercase tracking-widest text-foreground">
-                  {category}
-                </h3>
-                <div className="h-px flex-1 bg-border" />
-                <span className="text-xs font-medium text-muted">
-                  {groupedSkills[category]!.length}
-                </span>
-              </div>
+        <AnimatePresence mode="popLayout">
+          {skillCategoryOrder
+            .filter((cat) => groupedSkills[cat])
+            .map((category) => (
+              <motion.div
+                key={category}
+                layout
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.4 }}
+              >
+                <div className="mb-5 flex items-center gap-4">
+                  <h3 className="text-xs font-bold uppercase tracking-widest text-white">
+                    {category}
+                  </h3>
+                  <div className="h-px flex-1 bg-white/10" />
+                  <span className="text-xs font-medium text-zinc-500">
+                    {groupedSkills[category]!.length}
+                  </span>
+                </div>
 
-              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-                {groupedSkills[category]!.map((skill) => (
-                  <button
-                    key={skill.name}
-                    type="button"
-                    onClick={() => setSelectedSkill(skill)}
-                    className="group flex flex-col justify-center gap-3 overflow-hidden rounded-xl border border-border bg-transparent p-4 text-left transition-colors hover:border-primary/50 hover:bg-border/20"
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className="grid h-10 w-10 shrink-0 place-items-center rounded-lg border border-border bg-background p-2 grayscale transition-all group-hover:border-primary/30 group-hover:grayscale-0">
-                        <Image
-                          src={skill.logo}
-                          alt={`${skill.name} logo`}
-                          width={24}
-                          height={24}
-                          className="h-full w-full object-contain"
-                          loading="lazy"
-                        />
+                <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+                  {groupedSkills[category]!.map((skill, index) => (
+                    <motion.button
+                      key={skill.name}
+                      type="button"
+                      onClick={() => setSelectedSkill(skill)}
+                      layout
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: index * 0.05 }}
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="group relative flex flex-col justify-center gap-3 overflow-hidden rounded-2xl bg-white/5 p-4 text-left shadow-lg outline outline-1 outline-white/5 transition-all hover:bg-white/10 hover:outline-white/20"
+                    >
+                      <div
+                        className={`absolute inset-0 bg-gradient-to-br opacity-0 transition-opacity duration-500 group-hover:opacity-100 ${categoryAccents[category]}`}
+                      />
+                      <div className="relative flex items-center gap-3">
+                        <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-black/40 p-2">
+                          <Image
+                            src={skill.logo}
+                            alt={`${skill.name} logo`}
+                            width={24}
+                            height={24}
+                            className="h-full w-full object-contain drop-shadow-[0_0_8px_rgba(255,255,255,0.1)]"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <p className="truncate text-sm font-semibold text-zinc-200 group-hover:text-white">
+                            {skill.name}
+                          </p>
+                          <p className="mt-0.5 text-xs text-zinc-500">
+                            {skill.projectsUsedIn.length} project
+                            {skill.projectsUsedIn.length !== 1 ? "s" : ""}
+                          </p>
+                        </div>
                       </div>
-                      <div className="min-w-0 flex-1">
-                        <p className="truncate text-sm font-semibold text-foreground transition-colors group-hover:text-primary">
-                          {skill.name}
-                        </p>
-                        <p className="mt-0.5 text-xs text-muted">
-                          {skill.projectsUsedIn.length} project{skill.projectsUsedIn.length !== 1 ? "s" : ""}
-                        </p>
-                      </div>
-                    </div>
-                  </button>
-                ))}
-              </div>
-            </div>
-          ))}
+                    </motion.button>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+        </AnimatePresence>
       </div>
 
       <SkillDetailDrawer

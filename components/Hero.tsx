@@ -19,11 +19,11 @@ import Tilt from "react-parallax-tilt";
 import { profile } from "@/data/portfolioData";
 
 const title = "RAJA K C";
-const subtitle = "AI & Data Science Student\nFull Stack Developer & IoT Innovator";
+const subtitle = "AI & Data Science Student\nFull Stack Developer";
 const mobileRoles = [
   "AI & Data Science Student",
-  "Full Stack Developer &",
-  "IoT Innovator",
+  "Full Stack Developer ",
+  
 ];
 const socialLinks = [
   { label: "GitHub", href: profile.githubUrl },
@@ -293,7 +293,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.7, delay: 1.15, ease: premiumEase }}
         >
-          Building full-stack applications, AI solutions, and IoT systems for
+          Building full-stack applications, AI solutions and iot for
           real-world problems.
         </motion.p>
 

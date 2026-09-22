@@ -68,7 +68,7 @@ export const profile = {
   location: "Tamil Nadu, India",
   githubUrl: "https://github.com/RAJA1404",
   linkedinUrl: "https://www.linkedin.com/in/raja-k-c-991b7a294/",
-  resumeUrl: "/RAJA_K_C_AIDS_NEC",
+  resumeUrl: "/RAJA_K_C_AIDS_NEC.pdf",
 };
 
 export const education = {

@@ -34,7 +34,12 @@ export interface ProjectScreenshot {
   alt: string;
 }
 
-export type SkillCategoryName = "Frontend" | "Backend" | "AI / ML" | "Tools";
+export type SkillCategoryName =
+  | "Programming Languages"
+  | "Core Computing Fundamentals"
+  | "Backend, APIs & Databases"
+  | "Frontend Development"
+  | "DevOps & infrastructure";
 
 export interface TechSkill {
   name: string;
@@ -90,166 +95,183 @@ export const focusAreas = [
 ];
 
 export const skillCategoryOrder: SkillCategoryName[] = [
-  "Frontend",
-  "Backend",
-  "AI / ML",
-  "Tools",
+  "Programming Languages",
+  "Core Computing Fundamentals",
+  "Backend, APIs & Databases",
+  "Frontend Development",
+  "DevOps & infrastructure",
 ];
 
 export const techSkills: TechSkill[] = [
-  // ── Frontend ──────────────────────────────────────────────
+  // ── Programming Languages ─────────────────────────────────
   {
-    name: "React",
-    logo: "/logos/react.svg",
-    category: "Frontend",
-    projectsUsedIn: ["RightToKnow", "College LMS Portal"],
-    keyConcepts: ["Hooks", "Component Architecture", "State Management", "JSX"],
+    name: "Java",
+    logo: "/logos/java.svg",
+    category: "Programming Languages",
+    projectsUsedIn: ["DSA / Problem Solving"],
+    keyConcepts: ["OOPs", "Data Structures", "Algorithms", "Collections"],
   },
   {
-    name: "Next.js",
-    logo: "/logos/nextjs.svg",
-    category: "Frontend",
-    projectsUsedIn: ["Personal Portfolio"],
-    keyConcepts: ["SSR", "App Router", "File-based Routing", "Server Components"],
+    name: "Python",
+    logo: "/logos/python.svg",
+    category: "Programming Languages",
+    projectsUsedIn: ["AI Sign Language Recognition"],
+    keyConcepts: ["NumPy", "Pandas", "Scikit-Learn", "Scripting"],
   },
   {
-    name: "Tailwind CSS",
-    logo: "/logos/tailwind.svg",
-    category: "Frontend",
-    projectsUsedIn: ["RightToKnow", "Personal Portfolio"],
-    keyConcepts: ["Utility-first CSS", "Responsive Design", "Design Tokens"],
-  },
-  {
-    name: "JavaScript",
-    logo: "/logos/javascript.svg",
-    category: "Frontend",
-    projectsUsedIn: ["RightToKnow", "College LMS Portal", "Personal Portfolio"],
-    keyConcepts: ["ES6+", "Async/Await", "DOM Manipulation", "Closures"],
-  },
-  {
-    name: "HTML",
-    logo: "/logos/html.svg",
-    category: "Frontend",
-    projectsUsedIn: ["RightToKnow", "College LMS Portal", "Personal Portfolio"],
-    keyConcepts: ["Semantic HTML", "Accessibility", "SEO", "Forms"],
-  },
-  {
-    name: "CSS",
-    logo: "/logos/css.svg",
-    category: "Frontend",
-    projectsUsedIn: ["RightToKnow", "College LMS Portal", "Personal Portfolio"],
-    keyConcepts: ["Flexbox", "Grid", "Animations", "Responsive Layouts"],
+    name: "SQL",
+    logo: "/logos/sql.svg",
+    category: "Programming Languages",
+    projectsUsedIn: ["College LMS Portal"],
+    keyConcepts: ["Queries", "Joins", "Aggregation", "Indexing"],
   },
 
-  // ── Backend ───────────────────────────────────────────────
+  // ── Core Computing Fundamentals ───────────────────────────
+  {
+    name: "Object-Oriented Programming (OOPs)",
+    logo: "/logos/oop.svg",
+    category: "Core Computing Fundamentals",
+    projectsUsedIn: ["College LMS Portal", "RightToKnow"],
+    keyConcepts: ["Inheritance", "Polymorphism", "Encapsulation", "Abstraction"],
+  },
+  {
+    name: "Database Management Systems (DBMS)",
+    logo: "/logos/dbms.svg",
+    category: "Core Computing Fundamentals",
+    projectsUsedIn: ["College LMS Portal", "RightToKnow"],
+    keyConcepts: ["Relational Algebra", "Normalization", "ACID Properties"],
+  },
+  {
+    name: "Operating Systems (OS)",
+    logo: "/logos/os.svg",
+    category: "Core Computing Fundamentals",
+    projectsUsedIn: ["System Design"],
+    keyConcepts: ["Process Management", "Memory Management", "Concurrency"],
+  },
+  {
+    name: "Computer Networks (CN)",
+    logo: "/logos/cn.svg",
+    category: "Core Computing Fundamentals",
+    projectsUsedIn: ["API Development", "System Design"],
+    keyConcepts: ["TCP/IP", "HTTP/HTTPS", "Routing", "DNS"],
+  },
+
+  // ── Backend, APIs & Databases ─────────────────────────────
   {
     name: "Node.js",
     logo: "/logos/nodejs.svg",
-    category: "Backend",
+    category: "Backend, APIs & Databases",
     projectsUsedIn: ["RightToKnow", "College LMS Portal"],
     keyConcepts: ["Event Loop", "NPM Ecosystem", "Middleware", "Streams"],
   },
   {
     name: "Express.js",
     logo: "/logos/expressjs.svg",
-    category: "Backend",
+    category: "Backend, APIs & Databases",
     projectsUsedIn: ["RightToKnow", "College LMS Portal"],
     keyConcepts: ["REST APIs", "Middleware", "Routing", "Error Handling"],
   },
   {
+    name: "REST APIs",
+    logo: "/logos/rest-api.svg",
+    category: "Backend, APIs & Databases",
+    projectsUsedIn: ["RightToKnow", "College LMS Portal"],
+    keyConcepts: ["JWT", "RBAC", "CRUD", "API Design"],
+  },
+  {
+    name: "Postman",
+    logo: "/logos/postman.svg",
+    category: "Backend, APIs & Databases",
+    projectsUsedIn: ["RightToKnow", "College LMS Portal"],
+    keyConcepts: ["API Testing", "Collections", "Environment Variables"],
+  },
+  {
     name: "MongoDB",
     logo: "/logos/mongodb.svg",
-    category: "Backend",
+    category: "Backend, APIs & Databases",
     projectsUsedIn: ["RightToKnow", "College LMS Portal"],
     keyConcepts: ["Aggregation", "Mongoose", "Schema Design", "Indexing"],
   },
   {
-    name: "REST APIs",
-    logo: "/logos/rest-api.svg",
-    category: "Backend",
+    name: "MySQL",
+    logo: "/logos/mysql.svg",
+    category: "Backend, APIs & Databases",
+    projectsUsedIn: [],
+    keyConcepts: ["Relational Database", "Foreign Keys", "Stored Procedures", "Joins"],
+  },
+
+  // ── Frontend Development ──────────────────────────────────
+  {
+    name: "React.js",
+    logo: "/logos/react.svg",
+    category: "Frontend Development",
     projectsUsedIn: ["RightToKnow", "College LMS Portal"],
-    keyConcepts: ["JWT", "RBAC", "CRUD", "API Design"],
+    keyConcepts: ["Hooks", "Component Architecture", "State Management", "JSX"],
+  },
+  {
+    name: "Next.js",
+    logo: "/logos/nextjs.svg",
+    category: "Frontend Development",
+    projectsUsedIn: ["Personal Portfolio"],
+    keyConcepts: ["SSR", "App Router", "File-based Routing", "Server Components"],
+  },
+  {
+    name: "HTML",
+    logo: "/logos/html.svg",
+    category: "Frontend Development",
+    projectsUsedIn: ["RightToKnow", "College LMS Portal", "Personal Portfolio"],
+    keyConcepts: ["Semantic HTML", "Accessibility", "SEO", "Forms"],
+  },
+  {
+    name: "CSS",
+    logo: "/logos/css.svg",
+    category: "Frontend Development",
+    projectsUsedIn: ["RightToKnow", "College LMS Portal", "Personal Portfolio"],
+    keyConcepts: ["Flexbox", "Grid", "Animations", "Responsive Layouts"],
+  },
+  {
+    name: "Tailwind CSS",
+    logo: "/logos/tailwind.svg",
+    category: "Frontend Development",
+    projectsUsedIn: ["RightToKnow", "Personal Portfolio"],
+    keyConcepts: ["Utility-first CSS", "Responsive Design", "Design Tokens"],
   },
 
-  // ── AI / ML ───────────────────────────────────────────────
-  {
-    name: "Python",
-    logo: "/logos/python.svg",
-    category: "AI / ML",
-    projectsUsedIn: ["AI Sign Language Recognition"],
-    keyConcepts: ["NumPy", "Pandas", "Scikit-Learn", "Data Pipelines"],
-  },
-  {
-    name: "TensorFlow",
-    logo: "/logos/tensorflow.svg",
-    category: "AI / ML",
-    projectsUsedIn: ["AI Sign Language Recognition"],
-    keyConcepts: ["CNN Models", "Model Training", "Keras", "Transfer Learning"],
-  },
-  {
-    name: "OpenCV",
-    logo: "/logos/opencv.svg",
-    category: "AI / ML",
-    projectsUsedIn: ["AI Sign Language Recognition"],
-    keyConcepts: ["Image Processing", "Video Capture", "Contour Detection", "Computer Vision"],
-  },
-  {
-    name: "Machine Learning",
-    logo: "/logos/machine-learning.svg",
-    category: "AI / ML",
-    projectsUsedIn: ["AI Sign Language Recognition"],
-    keyConcepts: ["Supervised Learning", "Feature Engineering", "Model Evaluation", "Predictive Modeling"],
-  },
-  {
-    name: "Deep Learning",
-    logo: "/logos/deep-learning.svg",
-    category: "AI / ML",
-    projectsUsedIn: ["AI Sign Language Recognition"],
-    keyConcepts: ["CNN", "Neural Networks", "Backpropagation", "Epoch Training"],
-  },
-  {
-    name: "NLP",
-    logo: "/logos/nlp.svg",
-    category: "AI / ML",
-    projectsUsedIn: ["RightToKnow"],
-    keyConcepts: ["Text Processing", "Query Building", "Tokenization", "AI Drafting"],
-  },
-
-  // ── Tools ─────────────────────────────────────────────────
+  // ── DevOps & infrastructure ───────────────────────────────
   {
     name: "Git",
     logo: "/logos/git.svg",
-    category: "Tools",
+    category: "DevOps & infrastructure",
     projectsUsedIn: ["RightToKnow", "College LMS Portal", "Personal Portfolio"],
     keyConcepts: ["Branching", "Merge Conflicts", "Version Control", "Git Flow"],
   },
   {
     name: "GitHub",
     logo: "/logos/github.svg",
-    category: "Tools",
+    category: "DevOps & infrastructure",
     projectsUsedIn: ["RightToKnow", "College LMS Portal", "Personal Portfolio"],
     keyConcepts: ["Pull Requests", "Actions", "Collaboration", "Repository Management"],
   },
   {
-    name: "Postman",
-    logo: "/logos/postman.svg",
-    category: "Tools",
-    projectsUsedIn: ["RightToKnow", "College LMS Portal"],
-    keyConcepts: ["API Testing", "Collections", "Environment Variables", "Automated Tests"],
+    name: "Docker",
+    logo: "/logos/docker.svg",
+    category: "DevOps & infrastructure",
+    projectsUsedIn: [],
+    keyConcepts: ["Containerization", "Images", "Volumes", "Docker Compose"],
   },
   {
-    name: "Vercel",
-    logo: "/logos/vercel.svg",
-    category: "Tools",
-    projectsUsedIn: ["Personal Portfolio"],
-    keyConcepts: ["Deployment", "Serverless", "Edge Network", "CI/CD"],
+    name: "CI/CD Pipelines",
+    logo: "/logos/cicd.svg",
+    category: "DevOps & infrastructure",
+    projectsUsedIn: ["RightToKnow"],
+    keyConcepts: ["Automation", "GitHub Actions", "Build Checks", "Linting"],
   },
   {
-    name: "ESP32",
-    logo: "/logos/esp32.svg",
-    category: "Tools",
-    projectsUsedIn: ["IoT Smart Automation Physiotherapy Instrument"],
-    keyConcepts: ["Microcontroller", "Sensor Integration", "IoT Protocols", "Real-time Monitoring"],
+    name: "Linux/Shell Scripting",
+    logo: "/logos/linux.svg",
+    category: "DevOps & infrastructure",
+    projectsUsedIn: ["Automation"],
+    keyConcepts: ["Bash", "Cron Jobs", "File Permissions", "Process Management"],
   },
 ];
 

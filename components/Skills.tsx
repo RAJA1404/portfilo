@@ -14,10 +14,11 @@ import SectionHeading from "./SectionHeading";
 import SkillDetailDrawer from "./SkillDetailDrawer";
 
 const categoryAccents: Record<SkillCategoryName, string> = {
-  Frontend: "from-blue-500/20 to-cyan-400/5",
-  Backend: "from-emerald-500/20 to-blue-400/5",
-  "AI / ML": "from-violet-500/20 to-fuchsia-400/5",
-  Tools: "from-amber-500/15 to-violet-400/5",
+  "Programming Languages": "from-amber-500/20 to-orange-400/5",
+  "Core Computing Fundamentals": "from-violet-500/20 to-fuchsia-400/5",
+  "Backend, APIs & Databases": "from-emerald-500/20 to-blue-400/5",
+  "Frontend Development": "from-blue-500/20 to-cyan-400/5",
+  "DevOps & infrastructure": "from-rose-500/20 to-pink-400/5",
 };
 
 export default function Skills() {
